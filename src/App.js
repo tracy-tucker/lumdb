@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import Movie from './movie'
 
 const movies = [
   {
     id: 1,
-  title: "Star Wars"
+    title: "Star Wars"
   }, {
     id: 2,
-  title: "Star Man"
+    title: "Star Man"
   }, {
     id: 3,
-  title: "36th Chamber of Shaolin"
+    title: "36th Chamber of Shaolin"
+  }, {
+    id: 4,
+    title: "5 Deadly Venoms"
   }
 ];
 
@@ -25,11 +29,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        {movies.map(movie => (
-          <div key={movie.id}>
-            {movie.title}
-          </div>
-          ))}
+        {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
       </div>
     );
   }
