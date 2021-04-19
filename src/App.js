@@ -2,6 +2,22 @@ import React, { Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 
+const movies = [
+  {
+    id: 1,
+  title: "Star Wars"
+  }, {
+    id: 2,
+  title: "Star Man"
+  }, {
+    id: 3,
+  title: "36th Chamber of Shaolin"
+  }
+];
+
+//When iterating, key is important because that's how React
+//keeps track of the items you are iterating.
+//Key does NOT have to be `id`, it just needs to be a unique value.
 class App extends Component {
   render () {
     return (
@@ -9,6 +25,11 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
+        {movies.map(movie => (
+          <div key={movie.id}>
+            {movie.title}
+          </div>
+          ))}
       </div>
     );
   }
