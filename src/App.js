@@ -5,16 +5,23 @@ import './App.css';
 class App extends Component {
 
   state = {
-    toggle: true
+    input: "Hello"
+  }
+
+  //Arrow function being used so that we have access to the keyword, "this"
+  //and have it refer to the component itself.
+  updateInput = (event) => {
+    this.setState({
+      input: event.target.value
+    })
   }
 
   // Arrow function is needed when using this.state
+  // Arrow function belongs to the object that CALLS the function
   // setState is a built-in method that updates state
   // this.toggle.state is used because it is changing state to whatever its opposite is.
-  toggle = () => {
-    this.setState({
-      toggle: !this.state.toggle
-    })
+  submit = () => {
+    console.log(this.text.value)
   }
 
   render () {
@@ -22,14 +29,15 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Welcome text="Welcome to Using Props" toggle={this.state.toggle} />
+          <Welcome text="Welcome to Using Props" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          {this.state.toggle &&
-            <p>This should show and hide</p>
-          } 
-        <button onClick={this.toggle}>Show / Hide</button>
+          <h3>{this.state.input}</h3>
+          <input type="text" onChange={this.updateInput} value={this.state.input} />
+           {/* SEE REFS-AND-INPUTS.MD NOTES ON REF */}
+          <input type="text" ref={(input) => this.text = input }/>
+        <button onClick={this.submit}>Show Value</button>
         <br/>
           <a
             className="App-link"
@@ -47,8 +55,7 @@ class App extends Component {
 
 class Welcome extends Component {
   render() {
-    const { text, toggle } = this.props;
-    console.log(toggle);
+    const { text } = this.props;
     return (
       <h1 className="App-title">{text}</h1>
     )
