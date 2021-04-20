@@ -26,3 +26,29 @@ static propTypes = {
 ## PropDefault and PropType Rules
 1. You should have a PropType for every single prop that is used in your component.
 2. You must either have `isRequired` or `defaultProp` for each used prop. You will be alerted every single time on debugging if the wrong prop type is trying to pass in or get through.
+
+```
+export default class Movie extends Component {
+    // Define your prop types
+    // .isRequired on EVERY REQUIRED PROP. Does not crash app,
+    // but will not display error object.
+    static propTypes = {
+        movie: PropTypes.shape({
+            title: PropTypes.string.isRequired
+        }),
+        desc: PropTypes.string
+    }
+    // You cannot have defaultProps on nested props.
+    static defaultProps = {
+        desc: 'Description not available'
+    }
+    render() {
+        return (
+            <div>
+                <h3>{this.props.movie.title}</h3>
+                <p>{this.props.desc}</p>
+            </div>
+        )
+    }
+}
+```
