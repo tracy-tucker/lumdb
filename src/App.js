@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Movie from './movie'
+import Movie from './movie';
 
 // const movies = [
 //   {
@@ -38,12 +38,12 @@ class App extends Component {
       this.setState({
         movies: movies.results
       })
-    } catch(e) {
+    } catch (e) {
       console.log(e)
     }
   }
 
-  render () {
+  render() {
     // console.log(this.state.movies)
     return (
       <div className="App">
