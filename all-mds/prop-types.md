@@ -52,3 +52,14 @@ export default class Movie extends Component {
     }
 }
 ```
+
+# Proptypes in a functional stateless component
+
+In order to declare proptypes in a functional stateless component, you must relate the proptypes to the variable (`const`):
+```
+Movie.propTypes = {
+    movie: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+    }),
+}
+```
