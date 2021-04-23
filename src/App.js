@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch,
+  Link,
 } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import Movie from './movie';
+import MoviesList from './MoviesList';
 
 // const movies = [
 //   {
@@ -27,46 +29,26 @@ import Movie from './movie';
 //When iterating, key is important because that's how React
 //keeps track of the items you are iterating.
 //Key does NOT have to be `id`, it just needs to be a unique value.
-class App extends Component {
-
-  state = {
-    movies: []
-  }
-
-  // Study async/await/promises
-  async componentDidMount() {
-    try {
-      const res = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=5111df993a54ce3b4798d6295751075f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate');
-      const movies = await res.json();
-      // console.log(movies.results)
-      this.setState({
-        movies: movies.results
-      })
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  render() {
-    // console.log(this.state.movies)
-    return (
-      <Router>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
-          <Route path="/test" component={Test} />
-          {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+      <div className="App">
+        <header className="App-header">
+          <Link to="/">
+          <img src={logo} className="App-logo" alt="logo" />
+          </Link>
+        </header>
+        <Switch>
+          <Route exact path="/" component={MoviesList} />
+          <Route path="/:id" component={Test} />
+        </Switch>
+      </div>
+    </Router>
+);
 
 export default App;
 
-const Test = () => (
-  <h1>TEST</h1>
+const Test = ({match}) => (
+  <h1>{match.params.id}</h1>
 );
 
 

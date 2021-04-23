@@ -38,3 +38,35 @@ render() {
   `<Route>` will check the path of the route. If this route is true, then `<Route>` will send the browser to the designated component path.
 
   Think of React Router like a "gate-keeper" to the browser destination.
+
+  # Switch Routes
+  Make sure to add it to your imports
+  ```
+  import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+```
+
+Remember Switch in JS. It's like a big If/Else - it takes in an argument and will spit out one result based on a particular check.
+
+Example:
+
+```
+<Switch>
+  <Route path="/" component={MoviesList} />
+  <Route path="/test" component={Test} />
+</Switch>
+```
+
+BUT! Order of operation matters.
+The above will show `{Test}` with a list of movies because `Switch` is checking for `/` first in the order or Routes!
+Instead of worrying about order of operation, the better solution would be to use the `exact` prop:
+
+```
+<Switch>
+  <Route exact path="/" component={MoviesList} />
+  <Route path="/test" component={Test} />
+</Switch>
+```
