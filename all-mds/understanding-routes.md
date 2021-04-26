@@ -70,3 +70,8 @@ Instead of worrying about order of operation, the better solution would be to us
   <Route path="/test" component={Test} />
 </Switch>
 ```
+
+The prop `exact` is the same as `exact={true}`, but refactored it is just `exact`.
+
+# Match
+`match` is where params are stored within React-Router
