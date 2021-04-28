@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Overdrive from 'react-overdrive';
 
 // MovieDB's syntax in order to pull in poster images.
 // `w154` is the image size.
@@ -12,7 +13,9 @@ const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 // is the whole object, you can just pass in `movie` as the variable.
 const Movie = ({ movie }) => (
         <Link to={`/${movie.id}`}>
-        <   Poster src={`${POSTER_PATH}${movie.poster_path}`} alt='{movie.title}' />
+            <Overdrive id={movie.id}>
+                <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt='{movie.title}' />
+            </Overdrive>
         </Link>
 );
 

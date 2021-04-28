@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Movie from './movie';
 import styled from 'styled-components';
 
 //When iterating, key is important because that's how React
 //keeps track of the items you are iterating.
 //Key does NOT have to be `id`, it just needs to be a unique value.
-class MoviesList extends Component {
+class MoviesList extends PureComponent {
 
   state = {
     movies: []
