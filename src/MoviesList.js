@@ -5,6 +5,10 @@ import styled from 'styled-components';
 //When iterating, key is important because that's how React
 //keeps track of the items you are iterating.
 //Key does NOT have to be `id`, it just needs to be a unique value.
+// PureComponent does not perform the deep checking that a Component would do.
+// If PureComponent is passed in an array of objects and something inside
+// of that object has changed, PC will not know to re-render.
+// Using ShouldComponentUpdate lets you customize checking.
 class MoviesList extends PureComponent {
 
   state = {
