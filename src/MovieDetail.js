@@ -30,6 +30,7 @@ class MovieDetail extends Component {
   render() {
     // console.log(this.state.movies)
     const { movie } = this.state;
+
     return (
         <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
           <MovieInfo>
